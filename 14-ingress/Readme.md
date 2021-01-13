@@ -15,7 +15,7 @@
     $ kubectl apply -f ingress-controller.yml
     ### the entire nginx-controller application is deployed inside 
     ### a seperate namespace of it's own!!!
-    $ kubectl get all -n nginx-ingress
+    $ kubectl get all -n ingress-nginx
     ```
 
 3.  Now, just need to deploy `ingress-rules`. The only available `ingress-controller` would pick those rules and implement them!
@@ -28,11 +28,11 @@
 
 4.  Now, to test the webapp, you can use `curl` or `postman`
 
-    4.1 Using `curl`
+    4.1 Using `wget` on windows 10 (1806) replace 'localhost' with IP 10.0.75.2 if localhost doesn't work
 
-    ```bash
-    $ curl -H "my.kubernetes.example" 10.0.75.2/webapp1
-    $ curl -H "my.kubernetes.example" 10.0.75.2/webapp2
+    ```pwsh
+    $ wget -Headers @{"Host"="my.kubernetes.example"} "http://localhost/webapp1"
+    $ wget -Headers @{"Host"="my.kubernetes.example"} "http://localhost/webapp2"
     ```
 
     NOTE: the ip address `10.0.75.2` belogs to your hyper-v VM

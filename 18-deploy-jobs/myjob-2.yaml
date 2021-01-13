@@ -3,15 +3,16 @@ kind: CronJob
 metadata:
   name: myjob-2
   labels:
-    name: myjob
+    name: myjob-2
 spec:
-  schedule: "*/1 * * * *"
+  schedule: "*/1 * * * 4-6"
   jobTemplate:
     spec:
       ttlSecondsAfterFinished: 30
       template:
         spec:
           restartPolicy: Never
+          
           containers:
           - name: myjob
             image: ubuntu:trusty
